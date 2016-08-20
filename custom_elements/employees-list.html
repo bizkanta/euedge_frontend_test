@@ -1,9 +1,17 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 
 <dom-module id="employees-list">
 
   <template>
     <style>
+      .wrapper {
+        padding: 30px;
+      }
+      .add-button {
+        margin-bottom: 30px;
+      }
       .employee-list {
         display: flex;
       }
@@ -18,23 +26,31 @@
       }
     </style>
 
-    <div class="employee-list">
-      <div class="item title">Name</div>
-      <div class="item title">Job</div>
-      <div class="item title">Age</div>
-      <div class="item title">Nickname</div>
-      <div class="item title">Employee</div>
-    </div>
+    <div class="wrapper">
 
-    <template is="dom-repeat" items="{{employees}}">
-      <div class="employee-list">
-        <div class="item">{{item.name}}</div>
-        <div class="item">{{item.job}}</div>
-        <div class="item">{{item.age}}</div>
-        <div class="item">{{item.nick}}</div>
-        <div class="item">{{item.employee}}</div>
+      <div>
+        <paper-button raised class="add-button">Add</paper-button>
       </div>
-    </template>
+
+      <div class="employee-list">
+        <div class="item title">Name</div>
+        <div class="item title">Job</div>
+        <div class="item title">Age</div>
+        <div class="item title">Nickname</div>
+        <div class="item title">Employee</div>
+      </div>
+
+      <template is="dom-repeat" items="{{employees}}">
+        <div class="employee-list">
+          <div class="item">{{item.name}}</div>
+          <div class="item">{{item.job}}</div>
+          <div class="item">{{item.age}}</div>
+          <div class="item">{{item.nick}}</div>
+          <div class="item">{{item.employee}}</div>
+        </div>
+      </template>
+
+    </div>
 
   </template>
 
