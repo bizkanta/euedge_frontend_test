@@ -4,19 +4,37 @@
 
   <template>
     <style>
-
+      .employee-list {
+        display: flex;
+      }
+      .item {
+        padding-left: 10px;
+        width: 150px;
+        border-bottom: 1px solid black;
+      }
+      .title {
+        text-transform: uppercase;
+        font-weight: bold;
+      }
     </style>
 
-    <h1>Employees</h1>
-    <div>
-      <template is="dom-repeat" items="{{employees}}">
-          <div>{{item.name}}</div>
-          <div>{{item.job}}</div>
-          <div>{{item.age}}</div>
-          <div>{{item.nick}}</div>
-          <div>{{item.employee}}</div>
-      </template>
+    <div class="employee-list">
+      <div class="item title">Name</div>
+      <div class="item title">Job</div>
+      <div class="item title">Age</div>
+      <div class="item title">Nickname</div>
+      <div class="item title">Employee</div>
     </div>
+
+    <template is="dom-repeat" items="{{employees}}">
+      <div class="employee-list">
+        <div class="item">{{item.name}}</div>
+        <div class="item">{{item.job}}</div>
+        <div class="item">{{item.age}}</div>
+        <div class="item">{{item.nick}}</div>
+        <div class="item">{{item.employee}}</div>
+      </div>
+    </template>
 
   </template>
 
