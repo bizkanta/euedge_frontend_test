@@ -1,0 +1,38 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="employees-list">
+
+  <template>
+    <style>
+
+    </style>
+
+    <h1>Employees</h1>
+    <div>
+      <template is="dom-repeat" items="{{employees}}">
+          <div>{{item.name}}</div>
+          <div>{{item.job}}</div>
+          <div>{{item.age}}</div>
+          <div>{{item.nick}}</div>
+          <div>{{item.employee}}</div>
+      </template>
+    </div>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'employees-list',
+
+      ready: function() {
+        this.employees = [
+          {"name":"Giacomo Guilizzoni", "job":"Founder & CEO", "age":"34", "nick":"Peldi", "employee":true},
+          {"name":"Guido Jach Guilizzoni", "job":"", "age":"4", "nick":"The Guids", "employee":false},
+          {"name":"Marco Botton", "job":"Tuttofare", "age":"31", "nick":"", "employee":true}
+        ]
+      }
+    })
+
+  </script>
+
+</dom-module>
