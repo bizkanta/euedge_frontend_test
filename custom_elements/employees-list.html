@@ -5,6 +5,7 @@
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
 
 <dom-module id="employees-list">
 
@@ -25,6 +26,8 @@
         border-bottom: 1px solid black;
         display: flex;
         align-items: center;
+        justify-content: center;
+        text-align: center;
       }
       .title {
         text-transform: uppercase;
@@ -33,6 +36,10 @@
       paper-icon-button {
         width: 120px;
         border-bottom: 1px solid black;
+      }
+      .pop-up-checkbox {
+        padding-top: 25px;
+        padding-bottom: 10px;
       }
     </style>
 
@@ -63,11 +70,12 @@
               label="Nickname"
               value="{{newEmployee.nick}}">
             </paper-input>
-            <paper-input
-              label="Employee"
+            <paper-checkbox
+            class="pop-up-checkbox"
               required
-              value="{{newEmployee.employee}}">
-            </paper-input>
+              checked="{{newEmployee.employee}}">
+              Employee
+            </paper-checkbox>
           </div>
           <div class="buttons">
             <paper-button dialog-confirm autofocus on-tap="addEmployee">OK</paper-button>
@@ -91,7 +99,7 @@
           <div class="item">{{item.job}}</div>
           <div class="item">{{item.age}}</div>
           <div class="item">{{item.nick}}</div>
-          <div class="item">{{item.employee}}</div>
+          <paper-checkbox class="item" checked={{item.employee}} noink></paper-checkbox>
           <paper-icon-button icon="delete" on-tap="deleteEmployee"></paper-icon-button>
         </div>
       </template>
@@ -135,7 +143,7 @@
         var employee = event.model.item;
         var index = this.employees.indexOf(employee);
         this.splice('employees', index, 1);
-      }
+      },
     })
 
   </script>
