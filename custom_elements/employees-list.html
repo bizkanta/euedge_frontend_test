@@ -3,6 +3,8 @@
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 
 <dom-module id="employees-list">
 
@@ -19,12 +21,18 @@
       }
       .item {
         padding-left: 10px;
-        width: 150px;
+        width: 120px;
         border-bottom: 1px solid black;
+        display: flex;
+        align-items: center;
       }
       .title {
         text-transform: uppercase;
         font-weight: bold;
+      }
+      paper-icon-button {
+        width: 120px;
+        border-bottom: 1px solid black;
       }
     </style>
 
@@ -74,6 +82,7 @@
         <div class="item title">Age</div>
         <div class="item title">Nickname</div>
         <div class="item title">Employee</div>
+        <div class="item title"></div>
       </div>
 
       <template is="dom-repeat" items="{{employees}}">
@@ -83,6 +92,7 @@
           <div class="item">{{item.age}}</div>
           <div class="item">{{item.nick}}</div>
           <div class="item">{{item.employee}}</div>
+          <paper-icon-button icon="delete" on-tap="deleteEmployee"></paper-icon-button>
         </div>
       </template>
 
@@ -120,6 +130,12 @@
       addEmployee: function(newEmployee) {
         this.push('employees', this.newEmployee);
       },
+
+      deleteEmployee: function(event) {
+        var employee = event.model.item;
+        var index = this.employees.indexOf(employee);
+        this.splice('employees', index, 1);
+      }
     })
 
   </script>
