@@ -2,7 +2,7 @@
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
-<link rel="import" href="./pop-up-form.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
 
 <dom-module id="employees-list">
 
@@ -34,7 +34,37 @@
         <paper-button raised class="add-button" onclick="dialog.open()">Add</paper-button>
 
         <paper-dialog id="dialog">
-          <pop-up-form></pop-up-form>
+          <div class="form-container">
+            <paper-input
+              label="Name"
+              required
+              value="{{newEmployee.name}}">
+            </paper-input>
+            <paper-input
+              label="Job title"
+              value="{{newEmployee.job}}">
+            </paper-input>
+            <paper-input
+              label="Age"
+              required
+              value="{{newEmployee.age}}"
+              auto-validate
+              pattern="[0-9]*">
+            </paper-input>
+            <paper-input
+              label="Nickname"
+              value="{{newEmployee.nick}}">
+            </paper-input>
+            <paper-input
+              label="Employee"
+              required
+              value="{{newEmployee.employee}}">
+            </paper-input>
+          </div>
+          <div class="buttons">
+            <paper-button dialog-confirm autofocus on-tap="addEmployee">OK</paper-button>
+            <paper-button dialog-dismiss>Cancel</paper-button>
+          </div>
         </paper-dialog>
       </div>
 
@@ -64,13 +94,32 @@
     Polymer({
       is: 'employees-list',
 
+      properties: {
+
+        newEmployee: {
+          type: Object,
+          notify: true,
+          value: {
+            name: '',
+            job: '',
+            age: '',
+            nick: '',
+            employee: ''
+          },
+        },
+      },
+
       ready: function() {
         this.employees = [
           {"name":"Giacomo Guilizzoni", "job":"Founder & CEO", "age":"34", "nick":"Peldi", "employee":true},
           {"name":"Guido Jach Guilizzoni", "job":"", "age":"4", "nick":"The Guids", "employee":false},
           {"name":"Marco Botton", "job":"Tuttofare", "age":"31", "nick":"", "employee":true}
         ]
-      }
+      },
+
+      addEmployee: function(newEmployee) {
+        this.push('employees', this.newEmployee);
+      },
     })
 
   </script>
