@@ -69,6 +69,6 @@ paper-icon-button.del {
   border-radius: 10%;
 }
 iron-autogrow-textarea {
-  height: 100px;
+  /*height: 100px;*/
   width: 650px;
 }
