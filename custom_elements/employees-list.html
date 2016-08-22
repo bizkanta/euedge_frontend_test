@@ -7,41 +7,15 @@
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
 
 <dom-module id="employees-list">
 
   <template>
     <style>
-      .wrapper {
-        padding: 30px;
-      }
-      .add-button {
-        margin-bottom: 30px;
-      }
-      .employee-list {
-        display: flex;
-      }
-      .item {
-        padding-left: 10px;
-        width: 120px;
-        border-bottom: 1px solid black;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-      }
-      .title {
-        text-transform: uppercase;
-        font-weight: bold;
-      }
-      paper-icon-button {
-        width: 120px;
-        border-bottom: 1px solid black;
-      }
-      .pop-up-checkbox {
-        padding-top: 25px;
-        padding-bottom: 10px;
-      }
+    :host {
+      box-sizing: border-box;
+    }
     </style>
 
     <iron-ajax
@@ -55,10 +29,12 @@
     <div class="wrapper">
 
       <div>
-        <paper-button raised class="add-button" onclick="dialog.open()">Add</paper-button>
+        <div class="add-button">
+          <paper-button raised class="add" onclick="dialog.open()">Add</paper-button>
+        </div>
 
         <paper-dialog id="dialog">
-          <div class="form-container">
+          <div class="pop-up-container">
             <paper-input
               label="Name"
               required
@@ -96,20 +72,20 @@
       <div class="employee-list">
         <div class="item title">Name</div>
         <div class="item title">Job</div>
-        <div class="item title">Age</div>
-        <div class="item title">Nickname</div>
-        <div class="item title">Employee</div>
-        <div class="item title"></div>
+        <div class="item title age">Age</div>
+        <div class="item title nick">Nickname</div>
+        <div class="item title employee">Employee</div>
+        <div class="item title del"></div>
       </div>
 
       <template is="dom-repeat" items="{{employees}}">
         <div class="employee-list">
           <div class="item">{{item.name}}</div>
           <div class="item">{{item.job}}</div>
-          <div class="item">{{item.age}}</div>
-          <div class="item">{{item.nick}}</div>
-          <paper-checkbox class="item" checked={{item.employee}} noink></paper-checkbox>
-          <paper-icon-button icon="delete" on-tap="deleteEmployee"></paper-icon-button>
+          <div class="item age">{{item.age}}</div>
+          <div class="item nick">{{item.nick}}</div>
+          <paper-checkbox class="item employee" checked={{item.employee}} noink></paper-checkbox>
+          <paper-icon-button class="del" icon="delete" on-tap="deleteEmployee"></paper-icon-button>
         </div>
       </template>
 
