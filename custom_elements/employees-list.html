@@ -7,15 +7,15 @@
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
-<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+<link rel="import" href="../bower_components/iron-autogrow-textarea/iron-autogrow-textarea.html">
 
 <dom-module id="employees-list">
 
   <template>
     <style>
-    :host {
-      box-sizing: border-box;
-    }
+      :host {
+        box-sizing: border-box;
+      }
     </style>
 
     <iron-ajax
@@ -89,6 +89,9 @@
         </div>
       </template>
 
+      <h4>Data dump</h4>
+      <iron-autogrow-textarea disabled value="{{dataDumbText}}"></iron-autogrow-textarea>
+
     </div>
 
   </template>
@@ -102,19 +105,19 @@
         newEmployee: {
           type: Object,
           notify: true,
-          value: {
-            name: '',
-            job: '',
-            age: '',
-            nick: '',
-            employee: ''
-          },
+          value: {},
         },
 
         employees: {
           type: Array,
           notify: true,
           reflectToAttribute: true
+        },
+
+        dataDumbText: {
+          type: String,
+          notify: true,
+          value: ''
         }
       },
 
@@ -124,12 +127,18 @@
 
       addEmployee: function(newEmployee) {
         this.push('employees', this.newEmployee);
+        this.updateDataDumb();
       },
 
       deleteEmployee: function(event) {
         var employee = event.model.item;
         var index = this.employees.indexOf(employee);
         this.splice('employees', index, 1);
+        this.dataDumbText = '';
+      },
+
+      updateDataDumb: function() {
+        this.dataDumbText = JSON.stringify(this.newEmployee);
       },
     })
 

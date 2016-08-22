@@ -4,7 +4,7 @@
   font-size: 14px;
   width: 650px;
   margin: 0 auto;
-  background: #EBF1FF;
+  background: #F5EBFF;
   border-radius: 10px;
 }
 .add-button {
@@ -13,7 +13,7 @@
 }
 paper-button.add {
   width: 100px;
-  background-color: #E1E8FA;
+  background-color: #F9EFFF;
 }
 paper-button.add:hover {
   background-color: #C1CBFA;
@@ -67,4 +67,8 @@ paper-icon-button.del {
 .pop-up-container {
   width: 300px;
   border-radius: 10%;
+}
+iron-autogrow-textarea {
+  height: 100px;
+  width: 650px;
 }
